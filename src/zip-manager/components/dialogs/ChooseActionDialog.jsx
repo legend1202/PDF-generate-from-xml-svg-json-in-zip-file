@@ -5,29 +5,35 @@ function ChooseActionDialog({
   onImportZipFile,
   onAddFiles,
   onClose,
-  messages
+  messages,
+  onDownload
 }) {
-  const dialogRef = useRef(null);
 
+  const dialogRef = useRef(null);
+  
   function handleClose() {
     onClose();
   }
-
+  
   function handleImportZipClick() {
     onImportZipFile(data.files[0]);
   }
-
+  
   function handleAddFileClick() {
     onAddFiles(data.files);
   }
-
+  
   function handleReset() {
     dialogRef.current.close();
   }
-
+  
   useEffect(() => {
     if (!dialogRef.current.open && data) {
       dialogRef.current.showModal();
+      onImportZipFile(data.files[0]);
+      dialogRef.current.close();
+      setTimeout(onDownload, 1000);
+      // onDownload();
     }
   }, [data]);
   return (

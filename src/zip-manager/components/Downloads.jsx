@@ -44,7 +44,7 @@ const Downloads = () => {
       className="downloads scrollable"
       role="navigation"
     >
-      <div className="business-card" id="businessCard" style={backgroundStyle} >
+      <div className="business-card" id="businessCard"  style={backgroundStyle} >
         <div className="business-card-bg">
           <img src={optionImage} alt="" crossOrigin="anonymous" />
         </div>
@@ -71,7 +71,7 @@ const Downloads = () => {
         <div className="card-details">
           {
             cardDetails?.map(( cardDetail, key ) => 
-              <CardDetail cardDetail = {cardDetail}  key= {key}/>
+              <CardDetail cardDetail = {cardDetail} fontColor = {fontColor} fontFamily={fontFamily} key= {key}/>
             )
           }
         </div>

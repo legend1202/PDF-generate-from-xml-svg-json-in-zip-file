@@ -2,23 +2,35 @@
   "name": "zip-manager",
   "version": "0.1.0",
   "type": "module",
+  "main": "main.js",
   "dependencies": {
     "@react-pdf/renderer": "^3.1.14",
     "@zip.js/zip.js": "^2.7.31",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
+    "path": "^0.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.0.4",
     "redux": "^5.0.0",
+    "url": "^0.11.3",
+    "webfontloader": "^1.6.28",
     "workbox-core": "^7.0.0",
     "workbox-precaching": "^7.0.0",
     "workbox-routing": "^7.0.0"
   },
+  "build": {
+    "appId": "com.example.yourapp",
+    "mac": {
+      "category": "your.app.category"
+    }
+  },
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "electron-start": "electron .",
+    "electron:build": "electron-builder -m"
   },
   "browserslist": {
     "production": [
@@ -34,6 +46,8 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.0",
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1",
     "eslint": "^8.53.0",
     "eslint-plugin-react": "^7.33.2",
     "vite": "^5.0.0",

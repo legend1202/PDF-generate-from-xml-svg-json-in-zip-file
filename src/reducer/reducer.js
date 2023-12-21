@@ -8,6 +8,16 @@ function reducer(state = initialState, action) {
         ...state,
         jsonData: action.data
       };
+    case "setFontFamily":
+      return {
+        ...state,
+        fontFamily: action.data
+      };
+    case "setCardDetails":
+      return {
+        ...state,
+        cardDetails: action.data
+      };
     default:
       return state
   }

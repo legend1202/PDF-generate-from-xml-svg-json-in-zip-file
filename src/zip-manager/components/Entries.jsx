@@ -184,28 +184,29 @@ function Entries({
                 />
               </li>
             );
-          } else {
-            return (
-              <li
-                key={entry.id}
-                className={getEntryClassName(entry)}
-                onClick={(event) => onEntryClick({ event, entry })}
-              >
-                <Entry
-                  entry={entry}
-                  selectedFolder={selectedFolder}
-                  highlighted={false}
-                  selectModeEnabled={selectModeEnabled}
-                  onHighlight={onHighlight}
-                  onToggle={onToggle}
-                  onToggleRange={onToggleRange}
-                  onEnter={onEnter}
-                  i18n={i18n}
-                  messages={messages}
-                />
-              </li>
-            );
-          }
+          } 
+          // else {
+          //   return (
+          //     <li
+          //       key={entry.id}
+          //       className={getEntryClassName(entry)}
+          //       onClick={(event) => onEntryClick({ event, entry })}
+          //     >
+          //       <Entry
+          //         entry={entry}
+          //         selectedFolder={selectedFolder}
+          //         highlighted={false}
+          //         selectModeEnabled={selectModeEnabled}
+          //         onHighlight={onHighlight}
+          //         onToggle={onToggle}
+          //         onToggleRange={onToggleRange}
+          //         onEnter={onEnter}
+          //         i18n={i18n}
+          //         messages={messages}
+          //       />
+          //     </li>
+          //   );
+          // }
         })}
       </ol>
     </div>
