@@ -83,8 +83,8 @@ function ZipManager() {
     frequencyData: []
   });
 
-  const [orderId, setOrderId] = useState("");
-  const [quntity, setQuantity] = useState(0);
+  // const [orderId, setOrderId] = useState("");
+  // const [quntity, setQuantity] = useState(0);
   const reportTemplateRef = useRef(null);
 
   const highlightedEntryElementRef = useRef(null);
@@ -94,9 +94,7 @@ function ZipManager() {
 
   const pdfHtml = useRef(null);
 
-  const stData = useSelector(state => state.reducer.jsonData);
-  const fontFamily = useSelector(state => state.reducer.fontFamily);
-  const cardDetails = useSelector(state => state.reducer.cardDetails);
+  // const stData = useSelector(state => state.reducer.jsonData);
 
   const entriesElement = entriesElementRef.current;
   const musicPlayerActive = playerActiveRef.current;
@@ -392,12 +390,6 @@ function ZipManager() {
     initOptionsFeatures();
     initAppFeatures();
   }, []);
-  useEffect(() => {
-    if (stData) {
-      setOrderId(stData?.orderId);
-      setQuantity(stData?.quantity);
-    }
-  },[stData]);
 
   async function addGoogleFontToPDF(pdf, fontName, base64Font) {
     pdf.addFileToVFS(`custom.ttf`, base64Font);
@@ -416,7 +408,7 @@ function ZipManager() {
     });
   }
 
-  const onDownload = async () => {
+  const onDownload = async (orderId, quantity) => {
     // const input = document.getElementById('businessCard');
     // const docWidth = input.offsetWidth;
     // const docHeight = input.offsetHeight;
@@ -450,8 +442,8 @@ function ZipManager() {
 		// 	// },
     // });
 
-
-      const downloadFilename = "" + quntity + " X " + orderId + ".pdf";
+      console.log("=============", orderId, quantity);
+      const downloadFilename = "" + quantity + " X " + orderId + ".pdf";
 
       const node = document.querySelector("#businessCard");
       let imagesToLoad = node.getElementsByTagName('img');
@@ -526,7 +518,9 @@ function ZipManager() {
           constants={constants}
           messages={messages}
         />
-        <Downloads />
+        <Downloads
+          onDownload = {onDownload}
+        />
         {/* <div style={{margin:" 0 auto"}}>
           <MyDocument />
         </div> */}

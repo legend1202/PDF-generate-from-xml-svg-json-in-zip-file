@@ -32,7 +32,6 @@ function ChooseActionDialog({
       dialogRef.current.showModal();
       onImportZipFile(data.files[0]);
       dialogRef.current.close();
-      setTimeout(onDownload, 1000);
       // onDownload();
     }
   }, [data]);

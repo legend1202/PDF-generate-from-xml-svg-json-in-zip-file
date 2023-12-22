@@ -19,12 +19,10 @@ const TextChild = ({ cardDetail, fontColor, fontFamily }) => {
     const resolution = 0.6
 
     useEffect(() => {
-        console.log(width, height, inputValue.length);
         if (inputValue.length > 20) {
             setFontSize(10);
         }else{
             const tfontsize = Math.round( width / inputValue.length);
-            console.log(tfontsize, '====')
             if (tfontsize > 15) {
                 setFontSize(20);
             }else{

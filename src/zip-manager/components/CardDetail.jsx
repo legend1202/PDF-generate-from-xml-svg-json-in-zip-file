@@ -18,8 +18,6 @@ const CardDetail = ({ cardDetail, fontColor, fontFamily }) => {
     const resolution = 0.8
     
     useEffect(() => {
-        console.log("position", posX, posY);
-        console.log("dimention", width, height);
         if (cardRef.current) {
             adjustFontSizeToFit();
             WebFont.load({
@@ -49,7 +47,6 @@ const CardDetail = ({ cardDetail, fontColor, fontFamily }) => {
             console.warn(`Text does not fit in the container even at the smallest acceptable font size (${minFontSize}px).`);
         }
         // 381.732
-        console.log('hahahha', fontSize*inputValue.length, inputValue);
         // if (inputValue.length > 50) {
         //     setMarginLeft(posX);
         // }else{

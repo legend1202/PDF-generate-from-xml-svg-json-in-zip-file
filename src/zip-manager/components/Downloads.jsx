@@ -4,9 +4,10 @@ import React, {useEffect, useState} from "react";
 import { useSelector } from "react-redux";
 import CardDetail from "./CardDetail";
 
-const Downloads = () => {
+const Downloads = ({onDownload}) => {
   const [optionImage, setOptionImage] = useState("");
   const [details, setDetails] = useState([]);
+  const [downloadflag, setDownloadflag] = useState(false);
 
   const [customerLogoName, setCustomerLogoName] = useState("");
   const [customerLogoData, setCustomerLogoData] = useState("");
@@ -25,18 +26,25 @@ const Downloads = () => {
 
   useEffect(() => {
     if (stData) {
+      
+      
       setOptionImage(stData?.customizationData?.children[0]?.children[0]?.children[0]?.optionSelection?.overlayImage?.imageUrl);
       setDetails(stData?.customizationData?.children[0]?.children[0]?.children[1]?.children);
       setCustomerLogoData(stData?.customizationData?.children[0]?.children[0]?.children[2]);
     }
   },[stData]);
-
+  
   useEffect(() => {
-      const [fontFamilyData, fontColorData, cardContents ] = details;
-
-      setFontFamilyStyle(fontFamilyData?.fontSelection?.family);
-      setFontColor(fontColorData?.colorSelection?.value);
-      setCardDetails(cardContents?.children);
+    const [fontFamilyData, fontColorData, cardContents ] = details;
+    
+    setFontFamilyStyle(fontFamilyData?.fontSelection?.family);
+    setFontColor(fontColorData?.colorSelection?.value);
+    setCardDetails(cardContents?.children);
+    if (downloadflag) {
+      console.log(stData?.orderId, stData?.quantity);
+      setTimeout(onDownload(stData?.orderId, stData?.quantity), 1500);
+    }
+    setDownloadflag(!downloadflag);
   },[details]);
 
   useEffect(() => {
@@ -44,8 +52,6 @@ const Downloads = () => {
       if (customerLogoData?.children[0]?.image?.imageName) {
         setCustomerLogoName(customerLogoData?.children[0]?.image?.imageName);
         if (customerLogoName === imageData?.imageName) {
-          console.log("leoleol", customerLogoName);
-          console.log("imAGdata", imageData?.imageUrl);
           setCustomerLogoUrl(imageData?.imageUrl);
           setCustomerLogoWidth(customerLogoData?.dimension?.width);
           setCustomerLogoHeight(customerLogoData?.dimension?.height);
