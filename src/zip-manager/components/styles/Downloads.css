@@ -37,7 +37,7 @@
   height: '69mm'; */
   width: 101mm;
   height: 69mm;
-  /* border: 2px solid black; */
+  /* border: 3px solid black; */
   background-color: white;
   position: relative;
   overflow: hidden;
@@ -77,37 +77,37 @@
 }
 .downloads .business-card .blids-up .vertical-blid-left{
   margin-left: 10mm;
-  width: 2px;
+  width: 3px;
   height: 7mm;
 }
 .downloads .business-card .blids-up .vertical-blid-right{
   margin-right: 10mm;
-  width: 2px;
+  width: 3px;
   height: 7mm;
 }
 .downloads .business-card .blids-up .horizon-blid-left{
   margin-top: 4px;
   margin-left: 0mm;
   width: 8mm;
-  height: 2px;
+  height: 3px;
 }
 .downloads .business-card .blids-up .horizon-blid-right{
   margin-top: 4px;
   margin-right: 0mm;
   width: 8mm;
-  height: 2px;
+  height: 3px;
 }
 
 .downloads .business-card .blids-down .vertical-blid-left{
   margin-left: 10mm;
   /* margin-left: 6mm; */
-  width: 2px;
+  width: 3px;
   height: 7mm;
 }
 .downloads .business-card .blids-down .vertical-blid-right{
   margin-right: 10mm;
   /* margin-right: 6mm; */
-  width: 2px;
+  width: 3px;
   height: 7mm;
 }
 .downloads .business-card .blids-down .horizon-blid-left{
@@ -115,14 +115,14 @@
   margin-bottom: 4px;
   margin-left: 0mm;
   width: 8mm;
-  height: 2px;
+  height: 3px;
 }
 .downloads .business-card .blids-down .horizon-blid-right{
   margin-bottom: 4px;
   /* margin-bottom: 4mm; */
   margin-right: 0mm;
   width: 8mm;
-  height: 2px;
+  height: 3px;
 }
 .card-details{
   position: absolute;
