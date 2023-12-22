@@ -23,6 +23,9 @@
     "appId": "com.example.yourapp",
     "mac": {
       "category": "your.app.category"
+    },
+    "win": {
+      "target": "nsis"
     }
   },
   "scripts": {
@@ -30,7 +33,7 @@
     "build": "vite build",
     "serve": "vite preview",
     "electron-start": "electron .",
-    "electron:build": "electron-builder -m"
+    "electron:build": "electron-builder -w"
   },
   "browserslist": {
     "production": [

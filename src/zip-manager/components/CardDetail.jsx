@@ -10,12 +10,16 @@ const CardDetail = ({ cardDetail, fontColor, fontFamily }) => {
     let posX = cardDetail?.position?.x;
     let posY = cardDetail?.position?.y;
 
+    const [marginLeft, setMarginLeft] = useState(5);
+    
     // Create a ref to access the DOM element for measurements
     const cardRef = useRef(null);
-
+    
     const resolution = 0.8
-
+    
     useEffect(() => {
+        console.log("position", posX, posY);
+        console.log("dimention", width, height);
         if (cardRef.current) {
             adjustFontSizeToFit();
             WebFont.load({
@@ -29,7 +33,7 @@ const CardDetail = ({ cardDetail, fontColor, fontFamily }) => {
     const adjustFontSizeToFit = () => {
         const container = cardRef.current;
         let fontSize = 80; // Starting font size (in pixels)
-        const minFontSize = 7; // Minimum font size we are willing to accept
+        const minFontSize = 5; // Minimum font size we are willing to accept
 
         while (fontSize > minFontSize) {
             container.style.fontSize = `${fontSize}px`;
@@ -44,11 +48,24 @@ const CardDetail = ({ cardDetail, fontColor, fontFamily }) => {
         if (fontSize === minFontSize) {
             console.warn(`Text does not fit in the container even at the smallest acceptable font size (${minFontSize}px).`);
         }
+        // 381.732
+        console.log('hahahha', fontSize*inputValue.length, inputValue);
+        // if (inputValue.length > 50) {
+        //     setMarginLeft(posX);
+        // }else{
+        //     setMarginLeft(191 - width * resolution / 2 - posX );
+        // }
+        if (inputValue.length > 50) {
+            setMarginLeft(posX * 0.6);
+        }else{
+            setMarginLeft(posX * 0.85);
+        }
     };
     // console.log(fontColor, fontFamily);
     const cardDetailStyle = {
-        // width: Number(width) * resolution + "px",
+        width: Number(width) * resolution + "px",
         height: Number(height) * resolution + "px",
+        marginLeft: marginLeft + "px",
         textAlign: 'center',
         color: fontColor,
         fontFamily

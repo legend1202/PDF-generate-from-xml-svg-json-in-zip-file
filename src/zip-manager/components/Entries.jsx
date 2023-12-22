@@ -228,6 +228,7 @@ function Entry({
   const dispatch = useDispatch();
   
   const [jsonData, setJsonData] = useState(null);
+  const [imageSrc, setImageSrc] = useState(null);
 
   const  getJsonFromZip = async (zipJsonfile) => {
     const jsonFileContent = await zipJsonfile.getData(new zip.TextWriter(), {onprogress: (index, max) => {
@@ -239,18 +240,34 @@ function Entry({
     const json = JSON.parse(jsonFileContent);
     setJsonData(json);
   }
+
+  const  getJpgFromZip = async (zipJpgfile) => {
+
+    const blob = await zipJpgfile.getData(new zip.BlobWriter("image/jpeg"));
+              
+    // Create a local URL from the Blob
+    const imageUrl = URL.createObjectURL(blob);
+    setImageSrc({imageName: zipJpgfile.name, imageUrl});
+  }
   
   useEffect(()=>{
     const checkJsonfile = entry.name.includes(".json");
+    const checkJpgfile = entry.name.includes(".jpg");
     if(checkJsonfile){
       getJsonFromZip(entry);
+    }else if(checkJpgfile){
+      getJpgFromZip(entry);
     }
 
-  },[]);
+  },[entry.name]);
+
   useEffect(()=>{
     dispatch({ type: "setJson", data: jsonData });
-
   },[jsonData]);
+
+  useEffect(()=>{
+    dispatch({ type: "setLogo", data: imageSrc });
+  },[imageSrc]);
 
   return (
     <>

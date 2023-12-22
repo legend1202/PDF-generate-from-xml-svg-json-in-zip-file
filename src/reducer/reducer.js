@@ -1,5 +1,6 @@
 import React from "react";
-const initialState = {};
+const initialState = {
+};
 
 function reducer(state = initialState, action) {
   switch (action.type) {
@@ -7,6 +8,11 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         jsonData: action.data
+      };
+    case "setLogo":
+      return {
+        ...state,
+        logo: {...action.data}
       };
     case "setFontFamily":
       return {
