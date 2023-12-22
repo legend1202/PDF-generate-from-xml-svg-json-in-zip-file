@@ -85,6 +85,25 @@ const Downloads = () => {
     fontFamily
   };
 
+  const bleedline = {
+    position: "absolute",
+    top: "19px",
+    left: "21px",
+    width: "336px",
+    height: "222px",
+    backgroundColor: "transparent",
+    border: "1px solid blue",
+  }
+  const trimline = {
+    position: "absolute",
+    top: "26.5px",
+    left: "28.5px",
+    width: "321px",
+    height: "208px",
+    backgroundColor: "transparent",
+    border: "1px solid orange",
+  }
+
   return (
     <div
       className="downloads scrollable"
@@ -125,6 +144,8 @@ const Downloads = () => {
             )
           }
         </div>
+        <div style={bleedline}></div>
+        <div style={trimline}></div>
       </div>
     </div>
   )

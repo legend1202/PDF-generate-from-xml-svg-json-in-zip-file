@@ -470,7 +470,7 @@ function ZipManager() {
       }));
 
       Promise.all(promises).then(() => {
-        html2canvas(node, { useCORS: true, scale: 10 }).then(canvas => {
+        html2canvas(node, { useCORS: true, scale: 1.8 }).then(canvas => {
           const imgData = canvas.toDataURL('image/png');
           const pdf = new jsPDF({
             orientation: 'landscape',
