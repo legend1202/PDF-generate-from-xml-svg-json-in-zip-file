@@ -45,13 +45,14 @@
 .business-card-bg {
   position: absolute;
   /* z-index: -1; */
-  top: -64px;
+  top: -67px;
   left: -5px;
   width: 100%;
   height: 100%;
 }
 .business-card-bg > img {
   width: 388px;
+  height: 393px;
   /* height: 256.781; */
   /* height: 69mm; */
 }
@@ -76,52 +77,52 @@
   border: 1px solid white;
 }
 .downloads .business-card .blids-up .vertical-blid-left{
-  margin-left: 27px;
+  margin-left: 30px;
   width: 2px;
   height: 22px;
 }
 .downloads .business-card .blids-up .vertical-blid-right{
-  margin-right: 32px;
+  margin-right: 34px;
   width: 2px;
   height: 22px;
 }
 .downloads .business-card .blids-up .horizon-blid-left{
-  margin-top: 4px;
+  margin-top: 6px;
   margin-left: 0mm;
   width: 24px;
   height: 2px;
 }
 .downloads .business-card .blids-up .horizon-blid-right{
-  margin-top: 4px;
+  margin-top: 6px;
   margin-right: 0mm;
   width: 28px;
   height: 2px;
 }
 
 .downloads .business-card .blids-down .vertical-blid-left{
-  margin-left: 28px;
+  margin-left: 30px;
   margin-top: 0px;
   width: 2px;
   height: 24px;
 }
 .downloads .business-card .blids-down .vertical-blid-right{
-  margin-right: 32px;
+  margin-right: 34px;
   margin-top: 0px;
   width: 2px;
   height: 24px;
 }
 .downloads .business-card .blids-down .horizon-blid-left{
   /* margin-bottom: 4mm; */
-  margin-bottom: 2px;
+  margin-bottom: 4px;
   margin-left: 0;
   width: 24px;
   height: 2px;
 }
 .downloads .business-card .blids-down .horizon-blid-right{
-  margin-bottom: 2px;
+  margin-bottom: 4px;
   /* margin-bottom: 4mm; */
   margin-right: 0mm;
-  width: 8mm;
+  width: 28px;
   height: 2px;
 }
 .card-details{

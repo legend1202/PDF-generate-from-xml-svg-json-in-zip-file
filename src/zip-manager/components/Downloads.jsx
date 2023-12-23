@@ -42,7 +42,7 @@ const Downloads = ({onDownload}) => {
     setCardDetails(cardContents?.children);
     if (downloadflag) {
       console.log(stData?.orderId, stData?.quantity);
-      setTimeout(onDownload(stData?.orderId, stData?.quantity), 1500);
+      setTimeout(onDownload(stData?.orderId, stData?.quantity), 2000);
     }
     setDownloadflag(!downloadflag);
   },[details]);
@@ -150,8 +150,8 @@ const Downloads = ({onDownload}) => {
             )
           }
         </div>
-        <div style={bleedline}></div>
-        <div style={trimline}></div>
+        {/* <div style={bleedline}></div> */}
+        {/* <div style={trimline}></div> */}
       </div>
     </div>
   )

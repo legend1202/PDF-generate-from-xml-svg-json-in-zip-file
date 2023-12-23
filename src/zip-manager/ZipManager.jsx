@@ -462,14 +462,14 @@ function ZipManager() {
       }));
 
       Promise.all(promises).then(() => {
-        html2canvas(node, { useCORS: true, scale: 1.8 }).then(canvas => {
+        html2canvas(node, { useCORS: true, scale: 2 }).then(canvas => {
           const imgData = canvas.toDataURL('image/png');
           const pdf = new jsPDF({
             orientation: 'landscape',
             unit: 'mm',
-            format: [101, 69]
+            format: [91.2, 61]
           });
-          pdf.addImage(imgData, 'PNG', 0, 0, 101, 69);
+          pdf.addImage(imgData, 'PNG', -5.5, -5.1, 103, 71.5);
           pdf.save(downloadFilename);
         });
       }).catch(error => {
