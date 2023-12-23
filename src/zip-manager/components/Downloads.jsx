@@ -42,7 +42,7 @@ const Downloads = ({onDownload}) => {
     setCardDetails(cardContents?.children);
     if (downloadflag) {
       console.log(stData?.orderId, stData?.quantity);
-      setTimeout(onDownload(stData?.orderId, stData?.quantity), 2000);
+      setTimeout(onDownload(stData?.orderId, stData?.quantity), 3000);
     }
     setDownloadflag(!downloadflag);
   },[details]);
