@@ -123,7 +123,7 @@ const Downloads = ({onDownload}) => {
           customerLogoUrl &&
             <img src={customerLogoUrl} alt="" style={logoStyle} crossOrigin="anonymous" />
         }
-        <div className="blids-up">
+        {/* <div className="blids-up">
           <div className="blids">
             <div className="vertical-blid-left"></div>
             <div className="vertical-blid-right"></div>
@@ -142,7 +142,7 @@ const Downloads = ({onDownload}) => {
             <div className="vertical-blid-left"></div>
             <div className="vertical-blid-right"></div>
           </div>
-        </div>
+        </div> */}
         <div className="card-details">
           {
             cardDetails?.map(( cardDetail, key ) => 
