@@ -113,7 +113,6 @@ const Downloads = ({onDownload}) => {
           <img src={optionImage} alt="" crossOrigin="anonymous" />
         </div>
         {
-          customerLogoUrl &&
             <img src={customerLogoUrl} alt="" style={style.logoStyle} crossOrigin="anonymous" />
         }
         <div style={style.cardDetails}>

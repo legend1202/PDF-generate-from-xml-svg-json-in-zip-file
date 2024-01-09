@@ -244,11 +244,20 @@ function Entry({
 
   const  getJpgFromZip = async (zipJpgfile) => {
 
-    const blob = await zipJpgfile.getData(new zip.BlobWriter("image/jpeg"));
+    const blob = await zipPngfile.getData(new zip.BlobWriter("image/jpeg"));
               
     // Create a local URL from the Blob
     const imageUrl = URL.createObjectURL(blob);
     setImageSrc({imageName: zipJpgfile.name, imageUrl});
+  }
+
+  const  getPngFromZip = async (zipPngfile) => {
+
+    const blob = await zipPngfile.getData(new zip.BlobWriter("image/png"));
+              
+    // Create a local URL from the Blob
+    const imageUrl = URL.createObjectURL(blob);
+    setImageSrc({imageName: zipPngfile.name, imageUrl});
   }
 
   const  getSvgFromZip = async (zipJsonfile) => {
@@ -264,11 +273,14 @@ function Entry({
   useEffect(()=>{
     const checkJsonfile = entry.name.includes(".json");
     const checkJpgfile = entry.name.includes(".jpg");
+    const checkPngfile = entry.name.includes(".png");
     const checkSvgfile = entry.name.includes(".svg");
     if(checkJsonfile){
       getJsonFromZip(entry);
     }else if(checkJpgfile){
       getJpgFromZip(entry);
+    }else if(checkPngfile){
+      getPngFromZip(entry);
     }else if(checkSvgfile){
       getSvgFromZip(entry);
     }
