@@ -391,11 +391,6 @@ function ZipManager() {
     initAppFeatures();
   }, []);
 
-  async function addGoogleFontToPDF(pdf, fontName, base64Font) {
-    pdf.addFileToVFS(`custom.ttf`, base64Font);
-    pdf.addFont(`custom.ttf`, "custom");
-  }
-
   async function getBase64Font(url) {
     const fontFetch = await fetch(url);
     const fontBlob = await fontFetch.blob();
@@ -409,40 +404,7 @@ function ZipManager() {
   }
 
   const onDownload = async (orderId, quantity) => {
-    // const input = document.getElementById('businessCard');
-    // const docWidth = input.offsetWidth;
-    // const docHeight = input.offsetHeight;
-    // const downloadFilename = "" + quntity + " X " + orderId;
 
-    // const doc = new jsPDF({
-    //   orientation: "landscape",
-		// 	format: [docWidth+2, docHeight+2],
-		// 	unit: 'px',
-		// });
-    // // Set the font for the entire document
-    // doc.text("Hello world with custom font!", 10, 10);
-    // doc.save("hahaha");
-    // console.log(fontFamily);
-    
-		// doc.html(input, {
-    //   html2canvas: {
-    //     scale: 0.45
-    //   },
-    //   callback: function (doc) {
-    //       doc.save();
-    //   }
-    //   // async callback(doc) {
-    //   //   const base64Data = getBase64Font("https://fonts.googleapis.com/css2?family=Chewy:wght@400;700&display=swap");
-    //   //   await doc.addFileToVFS('JosefinSans.ttf', font);
-    //   //   await doc.addFont('JosefinSans.ttf', 'JosefinSans', 'normal');
-    //   //   await doc.setFont("JosefinSans", "normal");
-    //   //   await doc.text("Hello world with custom font!", 10, 10);
-		// 	// 	await doc.save(downloadFilename);
-        
-		// 	// },
-    // });
-
-      console.log("=============", orderId, quantity);
       const downloadFilename = "AZ_" + quantity + "x_" + orderId + ".pdf";
 
       const node = document.querySelector("#businessCard");
@@ -521,17 +483,6 @@ function ZipManager() {
         <Downloads
           onDownload = {onDownload}
         />
-        {/* <div style={{margin:" 0 auto"}}>
-          <MyDocument />
-        </div> */}
-        {/* <PDFDownloadLink document={<MyDocument />} fileName="myfile.pdf">
-          {({ blob, url, loading, error }) =>
-              loading ? 'Loading document...' : <button>Download My PDF</button>
-          }
-      </PDFDownloadLink> */}
-        {/* <div ref={reportTemplateRef}>
-          <ReportTemplate />
-        </div> */}
       </main>
       <ResetDialog
         data={dialogs.reset}

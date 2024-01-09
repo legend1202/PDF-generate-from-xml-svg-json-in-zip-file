@@ -48,7 +48,7 @@ const Downloads = ({onDownload}) => {
     setCardDetails(cardContents?.children);
     setContentMarginTop(cardContents?.children[0]?.position?.y);
     if (downloadflag) {
-      console.log(contentMarginTop);
+      console.log(customerLogoPosY, "=================");
       setTimeout(onDownload(stData?.orderId, stData?.quantity), 3000);
     }
     setDownloadflag(!downloadflag);
@@ -87,7 +87,7 @@ const Downloads = ({onDownload}) => {
       position: "absolute",
       width: customerLogoWidth  + "px",
       height: customerLogoHeight  + "px",
-      top: (customerLogoPosY < 108)?(customerLogoPosY + 51):customerLogoPosY + "px",
+      top: ((customerLogoPosY < 140)&&(customerLogoPosY != 108))?(customerLogoPosY + 51):((customerLogoPosY < 168) &&(customerLogoPosY > 108))?"168px":customerLogoPosY + "px",
       left: customerLogoPosX + "px",
       transform: 'translateX(-12%) translateY(-100%)'
     },
