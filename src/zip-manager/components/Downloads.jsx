@@ -48,7 +48,6 @@ const Downloads = ({onDownload}) => {
     setCardDetails(cardContents?.children);
     setContentMarginTop(cardContents?.children[0]?.position?.y);
     if (downloadflag) {
-      console.log(customerLogoPosY, "=================");
       setTimeout(onDownload(stData?.orderId, stData?.quantity), 6000);
     }
     setDownloadflag(!downloadflag);
@@ -113,7 +112,7 @@ const Downloads = ({onDownload}) => {
           <img src={optionImage} alt="" crossOrigin="anonymous" />
         </div>
         {
-            <img src={customerLogoUrl} alt="" style={style.logoStyle} crossOrigin="anonymous" />
+            customerLogoUrl && <img src={customerLogoUrl} alt="" style={style.logoStyle} crossOrigin="anonymous" />
         }
         <div style={style.cardDetails}>
           {

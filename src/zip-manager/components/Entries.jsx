@@ -244,7 +244,7 @@ function Entry({
 
   const  getJpgFromZip = async (zipJpgfile) => {
 
-    const blob = await zipPngfile.getData(new zip.BlobWriter("image/jpeg"));
+    const blob = await zipJpgfile.getData(new zip.BlobWriter("image/jpeg"));
               
     // Create a local URL from the Blob
     const imageUrl = URL.createObjectURL(blob);
