@@ -482,6 +482,7 @@ function ZipManager() {
         />
         <Downloads
           onDownload = {onDownload}
+          entries={entries}
         />
       </main>
       <ResetDialog

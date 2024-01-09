@@ -1,5 +1,6 @@
 import React from "react";
 const initialState = {
+  logo:[]
 };
 
 function reducer(state = initialState, action) {
@@ -10,9 +11,10 @@ function reducer(state = initialState, action) {
         jsonData: action.data
       };
     case "setLogo":
+      const tempLogo = [action.data, ...state.logo];
       return {
         ...state,
-        logo: {...action.data}
+        logo: tempLogo
       };
     case "setSvg":
       return {

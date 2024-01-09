@@ -3,12 +3,13 @@ import React, {useEffect, useState} from "react";
 
 import { useSelector } from "react-redux";
 import WebFont from 'webfontloader';
+import * as zip from '@zip.js/zip.js';
 
 import CardDetail from "./CardDetail";
 import MySVGComponent from "./MySVGComponent";
 import MySVGChildComponent from "./MySVGChildComponent";
 
-const Downloads = ({onDownload}) => {
+const Downloads = ({onDownload, entries}) => {
   const [optionImage, setOptionImage] = useState("");
   const [details, setDetails] = useState([]);
   const [downloadflag, setDownloadflag] = useState(false);
@@ -25,15 +26,37 @@ const Downloads = ({onDownload}) => {
   const [fontFamily, setFontFamilyStyle] = useState("");
   const [fontColor, setFontColor] = useState("");
   const [cardDetails, setCardDetails] = useState([]);
+  const [logoFlag, setLogoFlag] = useState(false);
 
   const stData = useSelector(state => state.reducer.jsonData);
   const imageData = useSelector(state => state.reducer.logo);
   const svgData = useSelector(state => state.reducer.svgData);
 
+  const initAll = () =>{
+    setOptionImage("");
+    setDetails([]);
+    setDownloadflag(false);
+
+    setCustomerLogoName("");
+    setCustomerLogoData("");
+    setCustomerLogoUrl("");
+    setCustomerLogoPosX(0);
+    setCustomerLogoPosY(0);
+    setCustomerLogoWidth(0);
+    setCustomerLogoHeight(0);
+    setContentMarginTop(0);
+    setFontFamilyStyle("");
+    setFontColor("");
+    setCardDetails([]);
+    setLogoFlag(false);
+  }
+
+  const autoDownload = () => {
+    onDownload(stData?.orderId, stData?.quantity);
+  }
+
   useEffect(() => {
     if (stData) {
-      
-      
       setOptionImage(stData?.customizationData?.children[0]?.children[0]?.children[0]?.optionSelection?.overlayImage?.imageUrl);
       setDetails(stData?.customizationData?.children[0]?.children[0]?.children[1]?.children);
       setCustomerLogoData(stData?.customizationData?.children[0]?.children[0]?.children[2]);
@@ -48,32 +71,51 @@ const Downloads = ({onDownload}) => {
     setCardDetails(cardContents?.children);
     setContentMarginTop(cardContents?.children[0]?.position?.y);
     if (downloadflag) {
-      setTimeout(onDownload(stData?.orderId, stData?.quantity), 6000);
+      setTimeout(initAll, 3000);
+      setTimeout(autoDownload, 2000);
     }
     setDownloadflag(!downloadflag);
   },[details]);
+
 
   useEffect(() => {
     if (customerLogoData) {
       if (customerLogoData?.children[0]?.image?.imageName) {
         setCustomerLogoName(customerLogoData?.children[0]?.image?.imageName);
-        if (customerLogoName === imageData?.imageName) {
-          setCustomerLogoUrl(imageData?.imageUrl);
-          setCustomerLogoWidth(customerLogoData?.buyerPlacement?.dimension?.width * customerLogoData?.buyerPlacement?.scale?.scaleX);
-          setCustomerLogoHeight(customerLogoData?.buyerPlacement?.dimension?.height * customerLogoData?.buyerPlacement?.scale?.scaleY);
-          setCustomerLogoPosX(customerLogoData?.buyerPlacement?.position?.x);
-          setCustomerLogoPosY(customerLogoData?.buyerPlacement?.position?.y);
-        }else{
-          setCustomerLogoUrl(null);
-          setCustomerLogoWidth(0);
-          setCustomerLogoHeight(0);
-          setCustomerLogoPosX(0);
-          setCustomerLogoPosY(0);
-        }
+        entries.map(async (entry) => {
+          if (entry.name == customerLogoName) {
+            const checkJpgfile = entry.name.includes(".jpg");
+            const checkPngfile = entry.name.includes(".png");
+            if(checkJpgfile){
+              const blob = await entry.getData(new zip.BlobWriter("image/jpeg"));
+              const imageUrl = URL.createObjectURL(blob);
+              setCustomerLogoUrl(imageUrl);
+            }else if(checkPngfile){
+              const blob = await entry.getData(new zip.BlobWriter("image/png"));
+              const imageUrl = URL.createObjectURL(blob);
+              setCustomerLogoUrl(imageUrl);
+            }
+            setCustomerLogoWidth(customerLogoData?.buyerPlacement?.dimension?.width * customerLogoData?.buyerPlacement?.scale?.scaleX);
+            setCustomerLogoHeight(customerLogoData?.buyerPlacement?.dimension?.height * customerLogoData?.buyerPlacement?.scale?.scaleY);
+            setCustomerLogoPosX(customerLogoData?.buyerPlacement?.position?.x);
+            setCustomerLogoPosY(customerLogoData?.buyerPlacement?.position?.y);
+            setLogoFlag(true);
+          }
+        })
+        // imageData?.map((imageDataChild) => {
+        //   if (customerLogoName === imageDataChild?.imageName) {
+        //     setCustomerLogoUrl(imageDataChild?.imageUrl);
+        //     setCustomerLogoWidth(customerLogoData?.buyerPlacement?.dimension?.width * customerLogoData?.buyerPlacement?.scale?.scaleX);
+        //     setCustomerLogoHeight(customerLogoData?.buyerPlacement?.dimension?.height * customerLogoData?.buyerPlacement?.scale?.scaleY);
+        //     setCustomerLogoPosX(customerLogoData?.buyerPlacement?.position?.x);
+        //     setCustomerLogoPosY(customerLogoData?.buyerPlacement?.position?.y);
+        //     setLogoFlag(true);
+        //   }
+        // })
       }
     }
       // setCustomerLogo();
-  },[imageData]);
+  },[customerLogoData]);
 
   const style = {
     backgroundStyle:{
@@ -112,7 +154,7 @@ const Downloads = ({onDownload}) => {
           <img src={optionImage} alt="" crossOrigin="anonymous" />
         </div>
         {
-            customerLogoUrl && <img src={customerLogoUrl} alt="" style={style.logoStyle} crossOrigin="anonymous" />
+            logoFlag && <img src={customerLogoUrl} alt="" style={style.logoStyle} crossOrigin="anonymous" />
         }
         <div style={style.cardDetails}>
           {
