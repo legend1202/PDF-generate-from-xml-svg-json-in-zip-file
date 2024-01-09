@@ -34,7 +34,7 @@ const CardDetail = ({ cardDetail, fontColor, fontFamily }) => {
         const minFontSize = 5; // Minimum font size we are willing to accept
 
         while (fontSize > minFontSize) {
-            container.style.fontSize = `${fontSize}px`;
+            container.style.fontSize = `${fontSize * 1.2}px`;
 
             if ((container.scrollWidth <= container.offsetWidth ) && (container.scrollHeight <= container.offsetHeight)) {
                 break; // The text fits within the container at the current font size
@@ -46,19 +46,13 @@ const CardDetail = ({ cardDetail, fontColor, fontFamily }) => {
         if (fontSize === minFontSize) {
             console.warn(`Text does not fit in the container even at the smallest acceptable font size (${minFontSize}px).`);
         }
-        // 381.732
-        // if (inputValue.length > 50) {
-        //     setMarginLeft(posX);
-        // }else{
-        //     setMarginLeft(191 - width * resolution / 2 - posX );
-        // }
         if (inputValue.length > 50) {
             setMarginLeft(posX * 0.6);
         }else{
             setMarginLeft(posX * 0.85);
         }
     };
-    // console.log(fontColor, fontFamily);
+    
     const cardDetailStyle = {
         width: Number(width) * resolution + "px",
         height: Number(height) * resolution + "px",

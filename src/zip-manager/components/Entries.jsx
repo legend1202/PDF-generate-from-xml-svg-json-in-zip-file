@@ -229,6 +229,7 @@ function Entry({
   
   const [jsonData, setJsonData] = useState(null);
   const [imageSrc, setImageSrc] = useState(null);
+  const [svgData, setSvgData] = useState(null);
 
   const  getJsonFromZip = async (zipJsonfile) => {
     const jsonFileContent = await zipJsonfile.getData(new zip.TextWriter(), {onprogress: (index, max) => {
@@ -249,14 +250,27 @@ function Entry({
     const imageUrl = URL.createObjectURL(blob);
     setImageSrc({imageName: zipJpgfile.name, imageUrl});
   }
+
+  const  getSvgFromZip = async (zipJsonfile) => {
+
+    const jsonFileContent = await zipJsonfile.getData(new zip.TextWriter(), {onprogress: (index, max) => {
+      // Handle progress if needed
+      console.log(`Progress: ${index} of ${max}`);
+    }});
+
+    setSvgData(jsonFileContent);
+  }
   
   useEffect(()=>{
     const checkJsonfile = entry.name.includes(".json");
     const checkJpgfile = entry.name.includes(".jpg");
+    const checkSvgfile = entry.name.includes(".svg");
     if(checkJsonfile){
       getJsonFromZip(entry);
     }else if(checkJpgfile){
       getJpgFromZip(entry);
+    }else if(checkSvgfile){
+      getSvgFromZip(entry);
     }
 
   },[entry.name]);
@@ -268,6 +282,10 @@ function Entry({
   useEffect(()=>{
     dispatch({ type: "setLogo", data: imageSrc });
   },[imageSrc]);
+
+  useEffect(()=>{
+    dispatch({ type: "setSvg", data: svgData });
+  },[svgData]);
 
   return (
     <>

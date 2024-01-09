@@ -14,6 +14,11 @@ function reducer(state = initialState, action) {
         ...state,
         logo: {...action.data}
       };
+    case "setSvg":
+      return {
+        ...state,
+        svgData: action.data
+      };
     case "setFontFamily":
       return {
         ...state,

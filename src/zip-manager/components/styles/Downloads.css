@@ -35,8 +35,8 @@
   margin: 36px auto;
   /* width: '99mm';
   height: '69mm'; */
-  width: 101mm;
-  height: 69mm;
+  /* width: 101mm;
+  height: 69mm; */
   /* border: 1px solid black; */
   background-color: white;
   position: relative;
@@ -45,14 +45,16 @@
 .business-card-bg {
   position: absolute;
   /* z-index: -1; */
-  top: -67px;
+  top: -70px;
   left: -5px;
-  width: 100%;
-  height: 100%;
+  width: 400px;
+  height: 400px;
 }
 .business-card-bg > img {
-  width: 388px;
-  height: 393px;
+  width: 409px;
+  height: 414px;
+  /* width: 388px;
+  height: 393px; */
   /* height: 256.781; */
   /* height: 69mm; */
 }

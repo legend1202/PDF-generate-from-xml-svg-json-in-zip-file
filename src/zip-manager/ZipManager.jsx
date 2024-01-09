@@ -443,7 +443,7 @@ function ZipManager() {
     // });
 
       console.log("=============", orderId, quantity);
-      const downloadFilename = "" + quantity + " X " + orderId + ".pdf";
+      const downloadFilename = "AZ_" + quantity + "x_" + orderId + ".pdf";
 
       const node = document.querySelector("#businessCard");
       let imagesToLoad = node.getElementsByTagName('img');
