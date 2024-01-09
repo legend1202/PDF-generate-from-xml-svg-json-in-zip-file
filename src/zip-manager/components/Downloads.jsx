@@ -49,7 +49,7 @@ const Downloads = ({onDownload}) => {
     setContentMarginTop(cardContents?.children[0]?.position?.y);
     if (downloadflag) {
       console.log(customerLogoPosY, "=================");
-      setTimeout(onDownload(stData?.orderId, stData?.quantity), 3000);
+      setTimeout(onDownload(stData?.orderId, stData?.quantity), 6000);
     }
     setDownloadflag(!downloadflag);
   },[details]);
