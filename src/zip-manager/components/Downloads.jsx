@@ -71,7 +71,7 @@ const Downloads = ({onDownload, entries}) => {
     setCardDetails(cardContents?.children);
     setContentMarginTop(cardContents?.children[0]?.position?.y);
     if (downloadflag) {
-      setTimeout(initAll, 3000);
+      // setTimeout(initAll, 3000);
       setTimeout(autoDownload, 2000);
     }
     setDownloadflag(!downloadflag);
@@ -102,19 +102,8 @@ const Downloads = ({onDownload, entries}) => {
             setLogoFlag(true);
           }
         })
-        // imageData?.map((imageDataChild) => {
-        //   if (customerLogoName === imageDataChild?.imageName) {
-        //     setCustomerLogoUrl(imageDataChild?.imageUrl);
-        //     setCustomerLogoWidth(customerLogoData?.buyerPlacement?.dimension?.width * customerLogoData?.buyerPlacement?.scale?.scaleX);
-        //     setCustomerLogoHeight(customerLogoData?.buyerPlacement?.dimension?.height * customerLogoData?.buyerPlacement?.scale?.scaleY);
-        //     setCustomerLogoPosX(customerLogoData?.buyerPlacement?.position?.x);
-        //     setCustomerLogoPosY(customerLogoData?.buyerPlacement?.position?.y);
-        //     setLogoFlag(true);
-        //   }
-        // })
       }
     }
-      // setCustomerLogo();
   },[customerLogoData]);
 
   const style = {
