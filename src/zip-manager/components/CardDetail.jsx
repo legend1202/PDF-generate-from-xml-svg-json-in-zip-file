@@ -59,7 +59,8 @@ const CardDetail = ({ cardDetail, fontColor, fontFamily }) => {
         marginLeft: marginLeft + "px",
         textAlign: 'center',
         color: fontColor,
-        fontFamily
+        fontFamily,
+        paddingLeft: (inputValue.length >40)? "16px" : "0px"
     };
 
     if (inputValue.length > 1) {
