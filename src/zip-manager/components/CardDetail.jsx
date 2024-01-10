@@ -34,7 +34,7 @@ const CardDetail = ({ cardDetail, fontColor, fontFamily }) => {
         const minFontSize = 5; // Minimum font size we are willing to accept
 
         while (fontSize > minFontSize) {
-            container.style.fontSize = `${fontSize * 1.2}px`;
+            container.style.fontSize = `${fontSize}px`;
 
             if ((container.scrollWidth <= container.offsetWidth ) && (container.scrollHeight <= container.offsetHeight)) {
                 break; // The text fits within the container at the current font size
