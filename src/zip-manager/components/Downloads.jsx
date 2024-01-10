@@ -71,7 +71,7 @@ const Downloads = ({onDownload, entries}) => {
     setCardDetails(cardContents?.children);
     setContentMarginTop(cardContents?.children[0]?.position?.y);
     if (downloadflag) {
-      // setTimeout(initAll, 3000);
+      setTimeout(initAll, 3000);
       setTimeout(autoDownload, 2000);
     }
     setDownloadflag(!downloadflag);
