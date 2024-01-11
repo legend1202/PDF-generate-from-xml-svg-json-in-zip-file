@@ -23,6 +23,7 @@ const Downloads = ({onDownload, entries}) => {
   const [customerLogoHeight, setCustomerLogoHeight] = useState(0);
   const [contentMarginTop, setContentMarginTop] = useState(0);
   const [quantity, setQuantity] = useState(0);
+  const [styleName, setStyleName] = useState("");
 
   const [fontFamily, setFontFamilyStyle] = useState("");
   const [fontColor, setFontColor] = useState("");
@@ -50,10 +51,12 @@ const Downloads = ({onDownload, entries}) => {
     setFontColor("");
     setCardDetails([]);
     setLogoFlag(false);
+    setQuantity(0);
+    setStyleName("");
   }
 
   const autoDownload = () => {
-    onDownload(stData?.orderId, quantity);
+    onDownload(stData?.orderId, (quantity + " [" + styleName + "] "));
   }
 
   useEffect(() => {
@@ -62,6 +65,7 @@ const Downloads = ({onDownload, entries}) => {
       setDetails(stData?.customizationData?.children[0]?.children[0]?.children[1]?.children);
       setCustomerLogoData(stData?.customizationData?.children[0]?.children[0]?.children[2]);
       setQuantity(stData?.customizationData?.children[0]?.children[0]?.children[5]?.displayValue)
+      setStyleName(stData?.customizationData?.children[0]?.children[0]?.children[0]?.optionSelection?.displayValue);
     }
   },[stData]);
   
