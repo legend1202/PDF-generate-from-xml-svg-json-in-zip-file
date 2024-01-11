@@ -22,6 +22,7 @@ const Downloads = ({onDownload, entries}) => {
   const [customerLogoWidth, setCustomerLogoWidth] = useState(0);
   const [customerLogoHeight, setCustomerLogoHeight] = useState(0);
   const [contentMarginTop, setContentMarginTop] = useState(0);
+  const [quantity, setQuantity] = useState(0);
 
   const [fontFamily, setFontFamilyStyle] = useState("");
   const [fontColor, setFontColor] = useState("");
@@ -52,7 +53,7 @@ const Downloads = ({onDownload, entries}) => {
   }
 
   const autoDownload = () => {
-    onDownload(stData?.orderId, stData?.quantity);
+    onDownload(stData?.orderId, quantity);
   }
 
   useEffect(() => {
@@ -60,6 +61,7 @@ const Downloads = ({onDownload, entries}) => {
       setOptionImage(stData?.customizationData?.children[0]?.children[0]?.children[0]?.optionSelection?.overlayImage?.imageUrl);
       setDetails(stData?.customizationData?.children[0]?.children[0]?.children[1]?.children);
       setCustomerLogoData(stData?.customizationData?.children[0]?.children[0]?.children[2]);
+      setQuantity(stData?.customizationData?.children[0]?.children[0]?.children[5]?.displayValue)
     }
   },[stData]);
   
@@ -71,8 +73,8 @@ const Downloads = ({onDownload, entries}) => {
     setCardDetails(cardContents?.children);
     setContentMarginTop(cardContents?.children[0]?.position?.y);
     if (downloadflag) {
-      setTimeout(initAll, 3000);
-      setTimeout(autoDownload, 2000);
+      setTimeout(initAll, 4000);
+      setTimeout(autoDownload, 3000);
     }
     setDownloadflag(!downloadflag);
   },[details]);
