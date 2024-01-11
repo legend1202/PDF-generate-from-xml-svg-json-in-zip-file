@@ -65,7 +65,7 @@ const Downloads = ({onDownload, entries}) => {
       setDetails(stData?.customizationData?.children[0]?.children[0]?.children[1]?.children);
       setCustomerLogoData(stData?.customizationData?.children[0]?.children[0]?.children[2]);
       setQuantity(stData?.customizationData?.children[0]?.children[0]?.children[5]?.displayValue)
-      setStyleName(stData?.customizationData?.children[0]?.children[0]?.children[0]?.optionSelection?.displayValue);
+      setStyleName(stData?.customizationData?.children[0]?.children[0]?.children[0]?.optionSelection?.name);
     }
   },[stData]);
   
